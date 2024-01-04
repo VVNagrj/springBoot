@@ -1,4 +1,4 @@
-package com.springStarter.TopicController;
+package com.springStarter.Topic;
 
 import java.util.List;
 
@@ -39,5 +39,5 @@ public class TopicController {
 	public void deleteTopic(@PathVariable String id) {
 		topicService.deleteTopic(id);
 	}
-	
+
 }

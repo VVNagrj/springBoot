@@ -1,20 +1,25 @@
-package com.springStarter.TopicController;
+package com.springStarter.Topic;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Topic {
-	
+
+	@Id
 	private String id;
 	private String name;
-	private String Description;
-	
+	private String description;
+
 	public Topic() {
-		
+
 	}
-	
+
 	public Topic(String id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.Description = description;
+		this.description = description;
 	}
 	public String getId() {
 		return id;
@@ -29,12 +34,12 @@ public class Topic {
 		this.name = name;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		description = description;
 	}
-	
-		
+
+
 
 }

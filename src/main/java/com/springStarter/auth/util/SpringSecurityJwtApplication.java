@@ -41,7 +41,8 @@ class SpringSecurityJwtApplication extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable()
 				.authorizeRequests().antMatchers("/authenticate").permitAll()
-						.anyRequest().authenticated().and()
+				.antMatchers("/swagger-ui/**", "/v2/api-docs/**", "/swagger-ui/index.html", "/webjars/**", "/swagger-resources/**").permitAll()
+				.anyRequest().authenticated().and()
 						.exceptionHandling().and().sessionManagement()
 						.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

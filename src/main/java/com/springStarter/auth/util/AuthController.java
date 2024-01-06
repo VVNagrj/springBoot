@@ -1,4 +1,4 @@
-package com.springStarter.auth;
+package com.springStarter.auth.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.springStarter.auth.dto.AuthenticationRequest;
 import com.springStarter.auth.dto.AuthenticationResponse;
-import com.springStarter.auth.util.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

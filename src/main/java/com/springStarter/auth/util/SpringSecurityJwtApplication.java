@@ -1,4 +1,4 @@
-package com.springStarter.auth;
+package com.springStarter.auth.util;
 
 import com.springStarter.auth.filters.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;

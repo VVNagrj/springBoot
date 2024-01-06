@@ -1,4 +1,4 @@
-package com.springStarter.auth;
+package com.springStarter.auth.util;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

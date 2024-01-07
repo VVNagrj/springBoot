@@ -1,4 +1,4 @@
-package com.springStarter.auth.util;
+package com.springStarter.jwtauth.util;
 
 import com.springStarter.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,8 @@ public class MyUserDetailsService implements UserDetailsService {
         // Use a User builder to create UserDetails
         return User.builder()
                 .username(userEntity.getUsername())
-                .password(userEntity.getPassword()) // Ensure that the stored password is encoded
-                .roles(userEntity.getRole()) // Add roles as needed
+                .password(userEntity.getPassword())
+                .roles(userEntity.getRole())
                 .build();
     }
 }

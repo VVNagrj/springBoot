@@ -1,9 +1,9 @@
-package com.springStarter.auth.util;
+package com.springStarter.jwtauth.util;
 
 import com.springStarter.User.User;
 import com.springStarter.User.UserRepository;
-import com.springStarter.auth.dto.AuthenticationRequest;
-import com.springStarter.auth.dto.AuthenticationResponse;
+import com.springStarter.jwtauth.dto.JwtAuthenticationRequest;
+import com.springStarter.jwtauth.dto.JwtAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class AuthController {
+class JwtAuthController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -31,7 +31,7 @@ class AuthController {
 	private UserRepository userRepository;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws Exception {
 
 		String username = authenticationRequest.getUsername();
 		String password = authenticationRequest.getPassword();
@@ -54,7 +54,7 @@ class AuthController {
 			final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 			final String jwt = jwtTokenUtil.generateToken(userDetails);
 
-			return ResponseEntity.ok(new AuthenticationResponse(jwt));
+			return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 		}
 	}
 

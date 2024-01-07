@@ -1,17 +1,19 @@
-package com.springStarter.auth.dto;
+package com.springStarter.jwtauth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.io.Serializable;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse implements Serializable {
+public class JwtAuthenticationRequest implements Serializable {
 
-    private String jwt;
+    private String username;
+    private String password;
 
 }

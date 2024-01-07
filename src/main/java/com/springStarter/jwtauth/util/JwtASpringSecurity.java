@@ -1,6 +1,6 @@
-package com.springStarter.auth.util;
+package com.springStarter.jwtauth.util;
 
-import com.springStarter.auth.filters.JwtRequestFilter;
+import com.springStarter.jwtauth.filters.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
-class SpringSecurityJwtApplication extends WebSecurityConfigurerAdapter {
+class JwtASpringSecurity extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService myUserDetailsService;
 	@Autowired
@@ -41,7 +41,8 @@ class SpringSecurityJwtApplication extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable()
 				.authorizeRequests().antMatchers("/authenticate").permitAll()
-						.anyRequest().authenticated().and()
+				.antMatchers("/swagger-ui/**", "/v2/api-docs/**", "/swagger-ui/index.html", "/webjars/**", "/swagger-resources/**").permitAll()
+				.anyRequest().authenticated().and()
 						.exceptionHandling().and().sessionManagement()
 						.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

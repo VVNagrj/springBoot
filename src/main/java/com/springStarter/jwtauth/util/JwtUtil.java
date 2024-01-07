@@ -1,4 +1,4 @@
-package com.springStarter.auth.util;
+package com.springStarter.jwtauth.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

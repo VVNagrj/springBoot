@@ -1,7 +1,7 @@
-package com.springStarter.auth.filters;
+package com.springStarter.jwtauth.filters;
 
-import com.springStarter.auth.util.MyUserDetailsService;
-import com.springStarter.auth.util.JwtUtil;
+import com.springStarter.jwtauth.util.MyUserDetailsService;
+import com.springStarter.jwtauth.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -3,6 +3,7 @@ package com.springStarter.ftp.controller;
 import com.springStarter.ftp.entity.FtpsrvrEntity;
 import com.springStarter.ftp.res.FtpRes;
 import com.springStarter.ftp.service.FtpsrvrService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -24,6 +25,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(value = "/srv")
+@Api(tags = "FTP Controller", description = "Operations related FTP file handling")
 public class FtpsrvrController {
 	
 	private static final Logger LOG = Logger.getLogger(FtpsrvrController.class.getName());

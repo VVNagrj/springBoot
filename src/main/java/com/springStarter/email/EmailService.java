@@ -25,13 +25,13 @@ public class EmailService {
     private int smtpPort;
 
     public void sendEmail(String to, String subject, String content) throws MessagingException {
+
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.host", smtpHost);
-        properties.setProperty("mail.smtp.port", String.valueOf(smtpPort));
+        properties.setProperty("mail.smtp.port", "587");
         properties.setProperty("mail.smtp.auth", "true");
         properties.setProperty("mail.smtp.starttls.enable", "true");
 
-        System.out.println(username + password);
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -39,42 +39,65 @@ public class EmailService {
             }
         });
 
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(username));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-        message.setSubject(subject);
-        message.setText(content);
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject(subject);
+            message.setText(content);
 
-        Transport.send(message);
+            Transport.send(message);
+
+            System.out.println("Email sent successfully.");
+
+    } catch (NoSuchProviderException e) {
+        e.printStackTrace();
+    } catch (MessagingException e) {
+        e.printStackTrace();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
     }
     public void readEmails() throws MessagingException, IOException {
-        Properties properties = new Properties();
-        properties.setProperty("mail.imap.host", smtpHost);
-        properties.setProperty("mail.imap.port", String.valueOf(smtpPort));
-        properties.setProperty("mail.imap.starttls.enable", "true");
+        try {
 
-        System.out.println(username + password);
-        Session session = Session.getInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+            Properties properties = new Properties();
+
+            properties.put("mail.pop3.host", smtpHost);
+            properties.put("mail.pop3.port", smtpPort);
+            properties.put("mail.pop3.starttls.enable", "true");
+            Session emailSession = Session.getDefaultInstance(properties);
+
+            Store store = emailSession.getStore("pop3s");
+            store.connect(smtpHost, username, password);
+
+            Folder inbox = store.getFolder("INBOX");
+            inbox.open(Folder.READ_ONLY);
+
+            Message[] messages = inbox.getMessages();
+            System.out.println("messages.length---" + messages.length);
+
+            for (int i = 0, n = messages.length; i < n; i++) {
+                Message message = messages[i];
+                System.out.println("---------------------------------");
+                System.out.println("Email Number " + (i + 1));
+                System.out.println("Subject: " + message.getSubject());
+                System.out.println("From: " + message.getFrom()[0]);
+                System.out.println("Text: " + message.getContent().toString());
+
             }
-        });
 
-        Store store = session.getStore("imap");
-        store.connect(smtpHost, username, password);
+            inbox.close(false);
+            store.close();
 
-        Folder inbox = store.getFolder("INBOX");
-        inbox.open(Folder.READ_ONLY);
-
-        Message[] messages = inbox.getMessages();
-        for (Message message : messages) {
-            // Process each email message
-            System.out.println("Subject: " + message.getSubject());
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        inbox.close(false);
-        store.close();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.springStarter.Topic;
+package com.springStarter.mongoDB.exp.Transaction;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -8,34 +8,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/topics")
-@Api(tags = "Topic Controller", description = "Operations pertaining to topics")
-public class TopicController {
+@RequestMapping("/transaction")
+@Api(tags = "Transaction Controller", description = "Operations pertaining to topics")
+public class TransactionController {
 
 	@Autowired
-	private TopicService topicService;
+	private TransactionService topicService;
 
 	@GetMapping
 	@ApiOperation("Get all topics")
-	public List<Topic> getAllTopics() {
+	public List<Transaction> getAllTopics() {
 		return topicService.getTopics();
 	}
 
 	@GetMapping("/{id}")
 	@ApiOperation("Get a topic by ID")
-	public Topic getTopicById(@PathVariable String id) {
+	public Transaction getTopicById(@PathVariable String id) {
 		return topicService.getTopicById(id);
 	}
 
 	@PostMapping
 	@ApiOperation("Add a new topic")
-	public void addTopic(@RequestBody Topic topic) {
+	public void addTopic(@RequestBody Transaction topic) {
 		topicService.addTopic(topic);
 	}
 
 	@PutMapping("/{id}")
 	@ApiOperation("Update a topic by ID")
-	public void updateTopic(@PathVariable String id, @RequestBody Topic topic) {
+	public void updateTopic(@PathVariable String id, @RequestBody Transaction topic) {
 		topicService.updateTopic(id, topic);
 	}
 

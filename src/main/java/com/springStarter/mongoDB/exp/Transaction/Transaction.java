@@ -1,4 +1,4 @@
-package com.springStarter.Topic;
+package com.springStarter.mongoDB.exp.Transaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "Topic")
-public class Topic {
+@Document(collection = "Transaction")
+public class Transaction {
 
 	@Id
 	private String id;

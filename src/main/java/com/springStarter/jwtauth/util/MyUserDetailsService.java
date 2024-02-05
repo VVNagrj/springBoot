@@ -1,6 +1,6 @@
 package com.springStarter.jwtauth.util;
 
-import com.springStarter.User.UserRepository;
+import com.springStarter.mongoDB.bookstore.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +16,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.springStarter.User.User userEntity = userRepository.findByUsername(username);
+        com.springStarter.mongoDB.bookstore.User.User userEntity = userRepository.findByUsername(username);
 
         if (userEntity == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);

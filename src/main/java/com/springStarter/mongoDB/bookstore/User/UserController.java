@@ -1,4 +1,4 @@
-package com.springStarter.User;
+package com.springStarter.mongoDB.bookstore.User;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

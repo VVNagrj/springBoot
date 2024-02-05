@@ -1,4 +1,4 @@
-package com.springStarter.User;
+package com.springStarter.mongoDB.bookstore.User;
 
 import org.springframework.stereotype.Service;
 

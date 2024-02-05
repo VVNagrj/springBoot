@@ -1,4 +1,4 @@
-package com.springStarter.User;
+package com.springStarter.mongoDB.bookstore.Topic;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,13 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "User")
-public class User {
+@Document(collection = "Topic")
+public class Topic {
 
 	@Id
 	private String id;
-	private String username;
-	private String password;
-	private String role;
+	private String name;
+	private String description;
 
 }

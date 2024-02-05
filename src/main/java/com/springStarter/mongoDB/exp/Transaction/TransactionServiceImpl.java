@@ -1,4 +1,4 @@
-package com.springStarter.Topic;
+package com.springStarter.mongoDB.exp.Transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,27 +6,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TopicServiceImpl implements TopicService {
+public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
-    TopicRepository topicRepository;
+    TransactionRepository topicRepository;
 
-    public List<Topic> getTopics() {
+    public List<Transaction> getTopics() {
         return topicRepository.findAll();
     }
 
-    public Topic getTopicById(String id) {
+    public Transaction getTopicById(String id) {
         return topicRepository.findById(id).get();
     }
 
 
-    public void addTopic(Topic topic) {
+    public void addTopic(Transaction topic) {
         topicRepository.save(topic);
     }
 
 
 
-    public void updateTopic(String id, Topic topic) {
+    public void updateTopic(String id, Transaction topic) {
         topicRepository.save(topic);
     }
 

@@ -1,7 +1,7 @@
 package com.springStarter.jwtauth.util;
 
-import com.springStarter.User.User;
-import com.springStarter.User.UserRepository;
+import com.springStarter.mongoDB.bookstore.User.User;
+import com.springStarter.mongoDB.bookstore.User.UserRepository;
 import com.springStarter.jwtauth.dto.JwtAuthenticationRequest;
 import com.springStarter.jwtauth.dto.JwtAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;

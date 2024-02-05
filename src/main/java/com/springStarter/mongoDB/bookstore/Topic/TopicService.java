@@ -1,4 +1,4 @@
-package com.springStarter.Topic;
+package com.springStarter.mongoDB.bookstore.Topic;
 
 import org.springframework.stereotype.Service;
 
